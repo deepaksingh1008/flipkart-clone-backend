@@ -36,6 +36,9 @@ connectDatabase();
 //         res.send('Server is Running! 🚀');
 //     });
 // }
+app.get("*", (req, res) => {
+  res.send({ message: "sucessfully" });
+});
 
 const server = app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
