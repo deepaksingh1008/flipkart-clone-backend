@@ -25,7 +25,11 @@ app.use("/api/v1", user);
 app.use("/api/v1", product);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
-
+app.get("*", (req, res, next) => {
+  res.status(200).json({
+    message: "bad request",
+  });
+});
 // error middleware
 app.use(errorMiddleware);
 

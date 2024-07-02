@@ -5,6 +5,11 @@ const app = require("./app");
 const connectDatabase = require("./config/database");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const http = require("http");
+//const app = require('./app');
+//const port = process.env.PORT || 3000;
+//const server = http.createServer(app);
+//server.listen(port,()=>{console.log('this app is running on '+port)});
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 app.use(cors());
@@ -36,13 +41,18 @@ connectDatabase();
 //         res.send('Server is Running! 🚀');
 //     });
 // }
-app.get("*", (req, res) => {
-  res.send({ message: "sucessfully" });
+// app.get("*/", (req, res) => {
+//   res.send({ message: "sucessfully" });
+// });
+
+const server = http.createServer(app);
+server.listen(PORT, () => {
+  console.log("this app is running on " + port);
 });
 
-const server = app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// const server = app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+// });
 
 // Unhandled Promise Rejection
 process.on("unhandledRejection", (err) => {
