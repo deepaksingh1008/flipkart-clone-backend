@@ -12,8 +12,7 @@ const http = require("http");
 //server.listen(port,()=>{console.log('this app is running on '+port)});
 dotenv.config();
 const PORT = process.env.PORT || 4000;
-app.use(cors());
-app.use(express.json());
+
 // UncaughtException Error
 process.on("uncaughtException", (err) => {
   console.log(`Error: ${err.message}`);
